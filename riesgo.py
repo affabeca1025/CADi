@@ -4,8 +4,8 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 
 # Simular datos y entrenar el modelo (igual que antes)
-np.random.seed(123)
-n = 300
+np.random.seed(2025)
+n = 500
 data = pd.DataFrame({
     'faltas': np.random.poisson(3, n),
     'promedio': np.round(np.random.uniform(5, 10, n), 2),
