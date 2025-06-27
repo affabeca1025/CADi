@@ -4,7 +4,6 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay
 from ipywidgets import interact, IntSlider, FloatSlider, Output
 from IPython.display import display
 import matplotlib.pyplot as plt
@@ -52,38 +51,6 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 y_pred
 
-
-# Paso 7: Evaluación del modelo
-
-# 1. Métrica de exactitud
-acc = accuracy_score(y_test, y_pred)
-print(f"Exactitud del modelo en datos de prueba: {acc:.2f}")
-
-# 2. Matriz de confusión
-cm = confusion_matrix(y_test, y_pred, labels=[0,1])
-disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['No en riesgo', 'En riesgo'])
-disp.plot(cmap='Blues')
-plt.title("Matriz de Confusión")
-plt.show()
-
-# 3. Importancia de las variables
-importancias = model.feature_importances_
-features = X.columns
-importancia_df = pd.DataFrame({'Variable': features, 'Importancia': importancias})
-importancia_df = importancia_df.sort_values(by='Importancia', ascending=False)
-
-# Mostrar tabla
-print("Importancia de las variables en el modelo:")
-display(importancia_df)
-
-# 4. Gráfico de importancia
-plt.figure(figsize=(8, 4))
-sns.barplot(data=importancia_df, x='Importancia', y='Variable', palette='viridis')
-plt.title("Variables más influyentes en el riesgo")
-plt.xlabel("Importancia (Gini)")
-plt.ylabel("Variable")
-plt.tight_layout()
-plt.show()
 
 # Paso 8: Interfaz interactiva con sliders
 out = Output()
