@@ -29,7 +29,7 @@ model = RandomForestClassifier(n_estimators=100, random_state=42)
 model.fit(X, y)
 
 # Interfaz en Streamlit
-st.title("📘 Riesgo de Reprobar una Materia")
+st.title("📘 Mi Riesgo de Reprobar una Materia")
 st.write("Ingresa tus datos académicos para estimar tu riesgo.")
 
 faltas = st.slider("Número de faltas", 0, 15, 3)
